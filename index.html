@@ -1260,15 +1260,15 @@ function clearCart() {
 
 function renderCart() {
     const container = document.getElementById('cart-items');
-    const emptyMsg = document.getElementById('cart-empty');
     if (cart.length === 0) {
-        container.innerHTML = '';
-        container.appendChild(emptyMsg);
-        emptyMsg.classList.remove('hidden');
+        container.innerHTML = `
+            <div class="text-center text-dark-600 text-sm py-10" id="cart-empty">
+                <i class="fas fa-cart-shopping text-3xl mb-3 opacity-30"></i>
+                <p>Carrito vacío</p>
+            </div>`;
         updateCartTotals();
         return;
     }
-    emptyMsg.classList.add('hidden');
     container.innerHTML = cart.map((item, i) => `
         <div class="cart-item flex items-center gap-3 animate-fade">
             <div class="flex-1 min-w-0">
